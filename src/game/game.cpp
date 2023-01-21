@@ -2,7 +2,7 @@
 
 namespace fr0sty {
     void Game::init() {
-        if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) == -1) {
+        if(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER) == -1 && IMG_Init( IMG_INIT_JPG | IMG_INIT_PNG ) == -1) {
             write("COULD NOT INITIALIZE SDL", true);
         }
 
@@ -41,10 +41,11 @@ namespace fr0sty {
         SDL_DestroyWindow(window);
         SDL_DestroyRenderer(renderer);
         SDL_Quit();
+        IMG_Quit();
     }
 
-    void Game::update() { 
-
+    void Game::update(float dt) { 
+        
     }
 
     void Game::preRender() {
