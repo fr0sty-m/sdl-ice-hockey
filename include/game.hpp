@@ -11,7 +11,7 @@
 
 namespace fr0sty {
 
-    enum STATE { MENU, GAME, SPLASH };
+    enum STATE { MENU_STATE, PLAY_STATE, SPLASH_STATE };
 
     class Game {
         private:

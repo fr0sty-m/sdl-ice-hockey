@@ -15,6 +15,7 @@ namespace fr0sty {
     }
 
     bool Game::initVars() {
+        gameState = PLAY_STATE;
 
         return running = true;
     }
