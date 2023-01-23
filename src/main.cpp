@@ -21,6 +21,7 @@ int main(int argc, char* args[]) {
         game.render();
         game.postRender();
     }
+    
     game.quit();
     game.write("STOPPING SYSTEMS!", true);
     game.write("EXITING PROGRAM!", true);
