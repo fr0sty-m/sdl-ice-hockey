@@ -7,7 +7,7 @@ namespace fr0sty {
             
 
         public:
-            GameScene();
+            GameScene() = default;
 
         };	// 		 !GameScene
 }	// 		 !fr0sty
