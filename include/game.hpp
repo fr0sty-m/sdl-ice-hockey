@@ -26,7 +26,6 @@ namespace fr0sty {
             STATE gameState;
 
             float _dt;
-            
             bool running;
 
         public:
