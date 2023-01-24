@@ -12,13 +12,15 @@ namespace fr0sty {
         if (initWindow() == false) {
             write("COULD NOT INITIALIZE WINDOW", true);
         }
-    }
+    } //    ! init()
+
 
     bool Game::initVars() {
         gameState = PLAY_STATE;
 
         return running = true;
-    }
+    } //    ! initVars()
+
 
     bool Game::initWindow() {
         window = SDL_CreateWindow(S_TITLE, CENTER, CENTER, S_WIDTH, S_HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_MOUSE_FOCUS | SDL_WINDOW_INPUT_FOCUS);
@@ -35,7 +37,8 @@ namespace fr0sty {
         
 
         return true;
-    }
+    } //    ! initWindow()
+
 
     void Game::quit() {
         running = false;
@@ -43,24 +46,29 @@ namespace fr0sty {
         SDL_DestroyRenderer(renderer);
         SDL_Quit();
         IMG_Quit();
-    }
+    } //    ! quit()
+
 
     void Game::update(float dt) { 
         
-    }
+    } //    ! update()
+
 
     void Game::preRender() {
         SDL_SetRenderDrawColor(renderer, BG_COLOR);
         SDL_RenderClear(renderer);
-    }
+    } //    ! preRender()
+
 
     void Game::render() {
+        
+    } //    ! render()
 
-    }
 
     void Game::postRender() {
         SDL_RenderPresent(renderer);
-    }
+    } //    ! postRender()
+
 
     void Game::events() {
         SDL_PollEvent(&event);
@@ -70,6 +78,7 @@ namespace fr0sty {
                 quit();
                 break;
         }
-    }
+    } //    ! events()
+
 
 } // 		 !fr0sty
