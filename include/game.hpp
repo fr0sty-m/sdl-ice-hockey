@@ -23,9 +23,10 @@ namespace fr0sty {
             SDL_Event event;
 
             Clock _clock;
-            float _dt;
             STATE gameState;
 
+            float _dt;
+            
             bool running;
 
         public:
