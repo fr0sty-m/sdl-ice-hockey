@@ -4,7 +4,7 @@ namespace fr0sty {
 
     SDL_Texture *Assets::loadTexture(const char *path, SDL_Renderer *renderer) {
 
-        SDL_Texture *texture = NULL;
+        SDL_Texture *texture;
         texture = IMG_LoadTexture(renderer, path);
 
         if (texture == NULL) {
@@ -14,8 +14,8 @@ namespace fr0sty {
         return texture;
     }
 
-    SDL_Surface *Assets::loadSurface(const char *path, SDL_Renderer *renderer) {
-        SDL_Surface *surface = NULL;
+    SDL_Surface *Assets::loadSurface(const char *path) {
+        SDL_Surface *surface;
 
         surface = IMG_Load(path);
 

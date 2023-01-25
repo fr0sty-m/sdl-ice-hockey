@@ -1,4 +1,6 @@
 #include "game.hpp"
+#include "SDL/SDL_render.h"
+#include "settings.hpp"
 
 namespace fr0sty {
     void Game::init() {
@@ -18,12 +20,12 @@ namespace fr0sty {
     bool Game::initVars() {
         gameState = PLAY_STATE;
 
-        surface = loader->loadTexture("assets/sprite/hockey_sprite.png", renderer);
+        //icon = loader->loadSurface("assets/sprite/hockey_icon.png");
+        //surface = loader->loadSurface("assets/sprite/hockey_sprite.png");
+        //texture = loader->loadTexture("assets/sprite/hockey_sprite.png", renderer);
 
         icon = IMG_Load("assets/sprite/hockey_icon.png");
-        surface = IMG_Load("assets/sprite/hockey_sprite.png");
-        texture = SDL_CreateTextureFromSurface(renderer, surface);
-        
+        texture = IMG_LoadTexture(renderer, "assets/sprite/hockey_sprite.png");
 
         return running = true;
     } //    ! initVars()
@@ -69,7 +71,9 @@ namespace fr0sty {
 
 
     void Game::render() {
-       SDL_RenderCopy(renderer, texture, NULL, NULL); 
+        SDL_Rect rect = { 20, 20, 64, 64 };
+        SDL_SetRenderDrawColor(renderer, RECT_COLOR);
+        SDL_RenderFillRect(renderer, &rect);
     } //    ! render()
 
 
@@ -85,6 +89,11 @@ namespace fr0sty {
             case SDL_QUIT:
                 quit();
                 break;
+            case SDL_KEYDOWN:
+                if (event.key.keysym.sym == SDLK_ESCAPE) {
+                    quit();
+                    break;
+                }
         }
     } //    ! events()
 

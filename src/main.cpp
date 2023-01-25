@@ -1,3 +1,4 @@
+#include "SDL/SDL_timer.h"
 #include "game.hpp"
 
 int main(int argc, char* args[]) {

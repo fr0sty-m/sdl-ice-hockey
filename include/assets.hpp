@@ -15,7 +15,7 @@ namespace fr0sty {
             Assets() {}
 
             SDL_Texture *loadTexture(const char *path, SDL_Renderer *renderer);
-            SDL_Surface *loadSurface(const char *path, SDL_Renderer *renderer);
+            SDL_Surface *loadSurface(const char *path);
 
     }; // 		 !Assets
 }	// 		 !fr0sty
