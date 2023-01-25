@@ -1,0 +1,1 @@
+nvim -p .\src\main.cpp .\src\game\game.cpp .\include\game.hpp .\include\assets.hpp .\src\game\assets.cpp

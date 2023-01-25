@@ -18,6 +18,13 @@ namespace fr0sty {
     bool Game::initVars() {
         gameState = PLAY_STATE;
 
+        surface = loader->loadTexture("assets/sprite/hockey_sprite.png", renderer);
+
+        icon = IMG_Load("assets/sprite/hockey_icon.png");
+        surface = IMG_Load("assets/sprite/hockey_sprite.png");
+        texture = SDL_CreateTextureFromSurface(renderer, surface);
+        
+
         return running = true;
     } //    ! initVars()
 
@@ -35,6 +42,7 @@ namespace fr0sty {
             return false;
         }
         
+        SDL_SetWindowIcon(window, icon);
 
         return true;
     } //    ! initWindow()
@@ -61,7 +69,7 @@ namespace fr0sty {
 
 
     void Game::render() {
-        
+       SDL_RenderCopy(renderer, texture, NULL, NULL); 
     } //    ! render()
 
 
@@ -80,5 +88,17 @@ namespace fr0sty {
         }
     } //    ! events()
 
+
+    float Game::clamp(float value, float min, float max) {
+        if (value < min) {
+            return min;
+        }
+
+        else if (value > max) {
+            return max;
+        }
+        
+        return value;
+    } //    ! clamp()
 
 } // 		 !fr0sty

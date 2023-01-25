@@ -7,7 +7,7 @@ int main(int argc, char* args[]) {
     game.init();
     game.write("SYSTEMS INITIALIZED!", true);
     game.getClock()->start();
-    game.write("CLOCK STARTING!", true);
+    game.write("SYSTEMS STARTING!", true);
 
     while (game.getRunning()) {
         game.events();
@@ -25,7 +25,6 @@ int main(int argc, char* args[]) {
     game.quit();
     game.write("STOPPING SYSTEMS!", true);
     game.write("EXITING PROGRAM!", true);
-    
     
     system("pause");
     return 0;

@@ -6,8 +6,10 @@
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
 
+#include "SDL/SDL_render.h"
 #include "settings.hpp"
 #include "clock.hpp"
+#include "assets.hpp"
 
 namespace fr0sty {
 
@@ -17,13 +19,18 @@ namespace fr0sty {
         private:
             SDL_Window *window;
             SDL_Renderer *renderer;
+            
             SDL_Surface *surface;
-            SDL_Texture *img;
+            SDL_Texture *texture;
+
+            SDL_Surface *icon;
 
             SDL_Event event;
 
             Clock _clock;
             STATE gameState;
+
+            Assets *loader;
 
             float _dt;
             bool running;
@@ -77,15 +84,17 @@ namespace fr0sty {
             /// @brief A method for console output 
             /// @param msg Parameter for output message
             /// @param endl Parameter for new line or not
-            void write(std::string msg, bool endl) { if (endl) std::cout << "SYSTEM: " << msg << std::endl; else std::cout << "SYSTEM: " << msg; }
+            static void write(std::string msg, bool endl) { if (endl) std::cout << "LOCUST: " << msg << std::endl; else std::cout << "SYSTEM: " << msg; }
             /// @brief A method for console output 
             /// @param msg Parameter for output message
             /// @param endl Parameter for new line or not
-            void write(float msg, bool endl) { if (endl) std::cout << "SYSTEM: " << msg << std::endl; else std::cout << "SYSTEM: " << msg; }
+            static void write(float msg, bool endl) { if (endl) std::cout << "LOCUST: " << msg << std::endl; else std::cout << "SYSTEM: " << msg; }
             /// @brief A method for console output 
             /// @param msg Parameter for output message
             /// @param endl Parameter for new line or not
-            void write(int msg, bool endl) { if (endl) std::cout << "SYSTEM: " << msg << std::endl; else std::cout << "SYSTEM: " << msg; }
+            static void write(int msg, bool endl) { if (endl) std::cout << "LOCUST: " << msg << std::endl; else std::cout << "SYSTEM: " << msg; }
+
+            static float clamp(float value, float min, float max);
 
         };	// 		 !Game
 }	// 		 !fr0sty
