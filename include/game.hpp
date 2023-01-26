@@ -20,10 +20,13 @@ namespace fr0sty {
             SDL_Window *window;
             SDL_Renderer *renderer;
             
-            SDL_Surface *surface;
-            SDL_Texture *texture;
+            SDL_Surface *spriteSheet;
 
             SDL_Surface *icon;
+
+            SDL_Surface *pSurface;
+            SDL_Texture *playerTex;
+
 
             SDL_Event event;
 

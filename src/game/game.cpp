@@ -1,6 +1,4 @@
 #include "game.hpp"
-#include "SDL/SDL_render.h"
-#include "settings.hpp"
 
 namespace fr0sty {
     void Game::init() {
@@ -8,12 +6,14 @@ namespace fr0sty {
             write("COULD NOT INITIALIZE SDL", true);
         }
 
-        if (initVars() == false) {
-            write("COULD NOT INITIALIZE VARIABLES", true);
-        }        
         if (initWindow() == false) {
             write("COULD NOT INITIALIZE WINDOW", true);
         }
+
+        if (initVars() == false) {
+            write("COULD NOT INITIALIZE VARIABLES", true);
+        }        
+        
     } //    ! init()
 
 
@@ -24,8 +24,32 @@ namespace fr0sty {
         //surface = loader->loadSurface("assets/sprite/hockey_sprite.png");
         //texture = loader->loadTexture("assets/sprite/hockey_sprite.png", renderer);
 
-        icon = IMG_Load("assets/sprite/hockey_icon.png");
-        texture = IMG_LoadTexture(renderer, "assets/sprite/hockey_sprite.png");
+        icon = loader->loadSurface("assets/sprite/hockey_icon.png");
+        if (icon == NULL) {
+            std::cout << "Could not load icon: " << SDL_GetError() << std::endl;
+            return running = false;
+        }
+
+        spriteSheet = loader->loadSurface("assets/sprite/hockey_sprite.png");
+        if (spriteSheet == NULL) {
+            std::cout << "Could not load spriteSheet" << SDL_GetError() << std::endl;
+            return running = false;
+        }
+
+        pSurface = loader->cropSprite( spriteSheet, 0, 0, 1, 1 );
+        if (pSurface == NULL) {
+            std::cout << "Could not load playerSurface" << SDL_GetError() << std::endl;
+            return running = false;
+        }
+
+        playerTex = SDL_CreateTextureFromSurface(renderer, pSurface);
+        if (playerTex == NULL) {
+            std::cout << "Could not load playerTexture" << SDL_GetError() << std::endl;
+            return running = false;
+        }
+
+
+        SDL_SetWindowIcon(window, icon);
 
         return running = true;
     } //    ! initVars()
@@ -44,7 +68,7 @@ namespace fr0sty {
             return false;
         }
         
-        SDL_SetWindowIcon(window, icon);
+        
 
         return true;
     } //    ! initWindow()
@@ -61,6 +85,8 @@ namespace fr0sty {
 
     void Game::update(float dt) { 
         
+
+
     } //    ! update()
 
 
@@ -71,9 +97,10 @@ namespace fr0sty {
 
 
     void Game::render() {
-        SDL_Rect rect = { 20, 20, 64, 64 };
-        SDL_SetRenderDrawColor(renderer, RECT_COLOR);
-        SDL_RenderFillRect(renderer, &rect);
+        SDL_Rect rect{ 250, 700, 128, 128 };
+        SDL_RenderCopy(renderer, playerTex, NULL, &rect);
+        
+
     } //    ! render()
 
 

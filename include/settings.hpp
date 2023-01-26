@@ -12,4 +12,7 @@
 #define BG_COLOR 34, 85, 161, 255
 #define RECT_COLOR 255,0,0,255
 
+#define SPRITE_PATH "assets/sprite/hockey_sprite.png"
+#define ICON_PATH "assets/sprite/hockey_icon.png"
+
 #endif // 		 !SETTINGS_HPP
